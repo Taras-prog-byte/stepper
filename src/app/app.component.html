@@ -1,0 +1,16 @@
+<stepper
+  [steps]="stepsItems"
+  [currentStep]="currentFirstStep"
+  [direction]="StepperDirection.Horizontal"
+  (stepChange)="firstStepperChange($event)"></stepper>
+<stepper
+  [steps]="stepsItems"
+  [currentStep]="currentSecondStep"
+  [direction]="StepperDirection.Horizontal"
+  (stepChange)="secondStepperChange($event)"></stepper>
+
+<stepper
+  [steps]="stepsItems"
+  [currentStep]="currentThirdStep"
+  [direction]="StepperDirection.Horizontal"
+  (stepChange)="thirdStepperChange($event)"></stepper>

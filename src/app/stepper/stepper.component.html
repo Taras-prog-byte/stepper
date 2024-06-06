@@ -1,0 +1,46 @@
+<div
+  *ngIf="currentStep"
+  [id]="uniqId"
+  class="wrapper"
+  [class.flex-col]="steps.length * 150 > windowWidth || direction === StepperDirection.Vertical"
+  [ngClass]="{
+    'flex-row': direction === StepperDirection.Horizontal,
+    }">
+  <button
+    #buttonElement
+    class="step"
+    *ngFor="let step of steps; index as i"
+    [class.active]="i === currentStepIndex"
+    [class.completed]="i < currentStepIndex"
+    [style.width.%]="
+      (steps.length * 150 > windowWidth || direction === StepperDirection.Vertical) ?
+        100 :
+        100/steps.length
+    "
+    (click)="setActive(i, buttonElement)">
+    <span class="title">
+      {{step.label}}
+    </span>
+    <div class="underline-animated"
+         *ngIf="steps.length * 150 > windowWidth || direction === StepperDirection.Vertical"
+         [@setActive]="{
+            value: currentStepIndex === i ? 'active' : 'inactive',
+            params: {endTransformPos: animationParams.activeStartAnim}
+         }"
+         [@setInactive]="{
+           value: currentStepIndex === i ? 'active' : 'inactive',
+           params: {endTransformPos: animationParams.inactiveStartAnim}
+         }"
+    ></div>
+    <div class="underline-animated absolute"
+         [style.left.px]="underlineStyles.left"
+         [style.width.px]="underlineStyles.width"
+         *ngIf="steps.length * 150 <= windowWidth && direction !== StepperDirection.Vertical"
+    ></div>
+    <div class="underline"></div>
+    <div class="step-index">
+      <ng-container *ngIf="i >= currentStepIndex else completedStep">{{i + 1}}</ng-container>
+      <ng-template #completedStep><i class="ri-check-fill"></i></ng-template>
+    </div>
+  </button>
+</div>

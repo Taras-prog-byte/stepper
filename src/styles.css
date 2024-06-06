@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  --bg-color: #0C0C0C;
+  --font-light-color: #FFF;
+  --font-color: #8D8D8D;
+  --font-dark-color: #0C0C0C;
+  --step-color: #202020;
+  --active-step-color: #22ECE9;
+
+  background: var(--bg-color);
+
+  *{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: Outfit;
+    margin: 0;
+    padding: 0;
+  }
+}

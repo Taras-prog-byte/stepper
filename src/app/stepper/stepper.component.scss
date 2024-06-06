@@ -1,0 +1,105 @@
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-col{
+  flex-direction: column;
++
+  button.step{
+    width: 100% !important;
+    min-width: 150px !important;
+  }
+}
+
+div.wrapper{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  margin: 9px;
+  width: 100%;
+
+  button.step{
+    padding: 0;
+    margin: 4px 0 0 0;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    width: 280px;
+    min-width: 150px;
+    overflow: hidden;
+
+    span.title{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 22px;
+      color: var(--font-color);
+      transition: color .3s;
+    }
+
+    div.underline{
+      width: 100%;
+      height: 4px;
+      border-radius: 37px;
+      margin-bottom: 8px;
+      background-color: var(--step-color);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    div.underline-animated{
+      width: 100%;
+      height: 4px;
+      border-radius: 37px;
+      margin-bottom: -4px;
+      background-color: var(--active-step-color);
+      z-index: 1;
+
+      &.absolute{
+        transition: left .4s;
+        position: absolute;
+        bottom: 12px;
+        will-change: left, width;
+      }
+    }
+
+    div.step-index{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-top: -20px;
+      background-color: var(--step-color);
+      font-size: 10px;
+      z-index: 2;
+      transition-property: color, background-color;
+      transition-duration:  .3s;
+      color: var(--font-color);
+    }
+
+    &.active{
+      div.step-index{
+        background-color: var(--active-step-color);
+        color: var(--font-dark-color);
+      }
+
+      span.title{
+        color: var(--font-light-color);
+      }
+    }
+    &.completed{
+      div.underline{
+        opacity: 100;
+      }
+    }
+  }
+}
